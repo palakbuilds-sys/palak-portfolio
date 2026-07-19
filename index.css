@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-white font-sans text-ink-700 antialiased;
+  }
+  ::selection {
+    @apply bg-brand-500/20 text-brand-800;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .glass {
+    @apply border border-white/60 bg-white/70 backdrop-blur-xl;
+  }
+
+  .glass-dark {
+    @apply border border-white/10 bg-white/5 backdrop-blur-xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white shadow-soft hover:bg-brand-700 hover:-translate-y-0.5 hover:shadow-glow active:translate-y-0;
+  }
+  .btn-ghost {
+    @apply btn border border-ink-200 bg-white/70 text-ink-800 hover:border-brand-300 hover:bg-white hover:text-brand-700 hover:-translate-y-0.5;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-ink-200 bg-white/70 px-3 py-1 text-xs font-medium text-ink-600 backdrop-blur;
+  }
+
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-700;
+  }
+
+  .card {
+    @apply rounded-3xl border border-ink-100 bg-white p-6 shadow-glass transition-all duration-500;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-soft;
+  }
+}
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8ec5ff, #1f60f1);
+  border-radius: 999px;
+  border: 2px solid white;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #59a3ff, #1849dc);
+}
+
+/* Hide scrollbar utility for horizontal carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
